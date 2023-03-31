@@ -17,6 +17,8 @@ namespace ShiftFrameworkTestingTools
         public string ApiItemName { get; set; }
         public string OdataItemName { get; set; }
 
+        public Dictionary<string, object>? AdditionalShiftEntityResponseData;
+
         public BasicTest(string apiItemName, string odataItemItem, HttpClient client, ITestOutputHelper output)
         {
             this.ApiItemName = apiItemName;
@@ -36,6 +38,8 @@ namespace ShiftFrameworkTestingTools
                 obj.EnsureSuccessStatusCode();
 
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
+
+            this.AdditionalShiftEntityResponseData = item!.Additional;
 
             return item!.Entity!;
         }
@@ -58,6 +62,8 @@ namespace ShiftFrameworkTestingTools
 
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
+            this.AdditionalShiftEntityResponseData = item!.Additional;
+
             return item!.Entity!;
         }
 
@@ -71,6 +77,8 @@ namespace ShiftFrameworkTestingTools
                 obj.EnsureSuccessStatusCode();
 
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
+
+            this.AdditionalShiftEntityResponseData = item!.Additional;
 
             return item!.Entity!;
         }

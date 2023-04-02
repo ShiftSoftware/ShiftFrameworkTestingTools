@@ -34,12 +34,12 @@ namespace ShiftFrameworkTestingTools
 
             var text = await obj.Content.ReadAsStringAsync();
 
-            if (ensureSuccessStatusCode)
-                obj.EnsureSuccessStatusCode();
-
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
             this.AdditionalShiftEntityResponseData = item!.Additional;
+
+            if (ensureSuccessStatusCode)
+                obj.EnsureSuccessStatusCode();
 
             return item!.Entity!;
         }
@@ -57,12 +57,12 @@ namespace ShiftFrameworkTestingTools
 
             var text = await obj.Content.ReadAsStringAsync();
 
-            if (ensureSuccessStatusCode)
-                obj.EnsureSuccessStatusCode();
-
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
             this.AdditionalShiftEntityResponseData = item!.Additional;
+
+            if (ensureSuccessStatusCode)
+                obj.EnsureSuccessStatusCode();
 
             return item!.Entity!;
         }
@@ -73,12 +73,12 @@ namespace ShiftFrameworkTestingTools
 
             var text = await obj.Content.ReadAsStringAsync();
 
-            if (ensureSuccessStatusCode)
-                obj.EnsureSuccessStatusCode();
-
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
             this.AdditionalShiftEntityResponseData = item!.Additional;
+
+            if (ensureSuccessStatusCode)
+                obj.EnsureSuccessStatusCode();
 
             return item!.Entity!;
         }
@@ -87,12 +87,12 @@ namespace ShiftFrameworkTestingTools
         {
             HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}{queryString}");
 
-            if (ensureSuccessStatusCode)
-                obj.EnsureSuccessStatusCode();
-
             var text = await obj.Content.ReadAsStringAsync();
 
             var items = JsonNode.Parse(text)!["value"].Deserialize<List<ListDTO>>();
+
+            if (ensureSuccessStatusCode)
+                obj.EnsureSuccessStatusCode();
 
             return items!;
         }
@@ -101,12 +101,12 @@ namespace ShiftFrameworkTestingTools
         {
             HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}/{ID}/revisions");
 
-            if (ensureSuccessStatusCode)
-                obj.EnsureSuccessStatusCode();
-
             var text = await obj.Content.ReadAsStringAsync();
 
             var items = JsonNode.Parse(text)!["value"].Deserialize<List<RevisionDTO>>();
+
+            if (ensureSuccessStatusCode)
+                obj.EnsureSuccessStatusCode();
 
             return items!;
         }

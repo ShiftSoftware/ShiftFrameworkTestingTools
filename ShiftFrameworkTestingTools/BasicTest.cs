@@ -28,11 +28,23 @@ namespace ShiftFrameworkTestingTools
             this.output = output;
         }
 
-        public async Task<DTO> Get(long ID, bool ensureSuccessStatusCode = true)
+        public async Task<DTO> Get(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.GetAsync($"/api/{ApiItemName}/{ID}");
 
             var text = await obj.Content.ReadAsStringAsync();
+
+            try
+            {
+                if (writeResponse)
+                    output.WriteLine(JsonNode.Parse(text)!.ToString());
+            }
+            catch
+            {
+                output.WriteLine(text);
+
+                return null!;
+            }
 
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
@@ -44,7 +56,7 @@ namespace ShiftFrameworkTestingTools
             return item!.Entity!;
         }
 
-        public async Task<DTO> PostOrPut(long? ID, DTO dto, bool ensureSuccessStatusCode = true)
+        public async Task<DTO> PostOrPut(long? ID, DTO dto, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             var httpContent = new StringContent(JsonSerializer.Serialize(dto), Encoding.UTF8, "application/json");
 
@@ -57,6 +69,18 @@ namespace ShiftFrameworkTestingTools
 
             var text = await obj.Content.ReadAsStringAsync();
 
+            try
+            {
+                if (writeResponse)
+                    output.WriteLine(JsonNode.Parse(text)!.ToString());
+            }
+            catch
+            {
+                output.WriteLine(text);
+
+                return null!;
+            }
+
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
             this.AdditionalShiftEntityResponseData = item!.Additional;
@@ -67,12 +91,24 @@ namespace ShiftFrameworkTestingTools
             return item!.Entity!;
         }
 
-        public async Task<DTO> Delete(long ID, bool ensureSuccessStatusCode = true)
+        public async Task<DTO> Delete(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.DeleteAsync($"/api/{ApiItemName}/{ID}");
 
             var text = await obj.Content.ReadAsStringAsync();
 
+            try
+            {
+                if (writeResponse)
+                    output.WriteLine(JsonNode.Parse(text)!.ToString());
+            }
+            catch
+            {
+                output.WriteLine(text);
+
+                return null!;
+            }
+
             var item = JsonNode.Parse(text).Deserialize<ShiftEntityResponse<DTO>>();
 
             this.AdditionalShiftEntityResponseData = item!.Additional;
@@ -83,11 +119,23 @@ namespace ShiftFrameworkTestingTools
             return item!.Entity!;
         }
 
-        public async Task<List<ListDTO>> OdataList(string? queryString = null, bool ensureSuccessStatusCode = true)
+        public async Task<List<ListDTO>> OdataList(string? queryString = null, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}{queryString}");
 
             var text = await obj.Content.ReadAsStringAsync();
+
+            try
+            {
+                if (writeResponse)
+                    output.WriteLine(JsonNode.Parse(text)!.ToString());
+            }
+            catch
+            {
+                output.WriteLine(text);
+
+                return null!;
+            }
 
             var items = JsonNode.Parse(text)!["value"].Deserialize<List<ListDTO>>();
 
@@ -97,11 +145,23 @@ namespace ShiftFrameworkTestingTools
             return items!;
         }
 
-        public async Task<List<RevisionDTO>> RevisionList(long ID, bool ensureSuccessStatusCode = true)
+        public async Task<List<RevisionDTO>> RevisionList(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}/{ID}/revisions");
 
             var text = await obj.Content.ReadAsStringAsync();
+
+            try
+            {
+                if (writeResponse)
+                    output.WriteLine(JsonNode.Parse(text)!.ToString());
+            }
+            catch
+            {
+                output.WriteLine(text);
+
+                return null!;
+            }
 
             var items = JsonNode.Parse(text)!["value"].Deserialize<List<RevisionDTO>>();
 

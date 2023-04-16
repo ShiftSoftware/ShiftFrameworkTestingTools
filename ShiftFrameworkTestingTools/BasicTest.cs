@@ -28,7 +28,7 @@ namespace ShiftFrameworkTestingTools
             this.output = output;
         }
 
-        public async Task<DTO> Get(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
+        public async Task<DTO> Get(string ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.GetAsync($"/api/{ApiItemName}/{ID}");
 
@@ -56,7 +56,7 @@ namespace ShiftFrameworkTestingTools
             return item!.Entity!;
         }
 
-        public async Task<DTO> PostOrPut(long? ID, DTO dto, bool ensureSuccessStatusCode = true, bool writeResponse = false)
+        public async Task<DTO> PostOrPut(string? ID, DTO dto, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             var httpContent = new StringContent(JsonSerializer.Serialize(dto), Encoding.UTF8, "application/json");
 
@@ -91,7 +91,7 @@ namespace ShiftFrameworkTestingTools
             return item!.Entity!;
         }
 
-        public async Task<DTO> Delete(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
+        public async Task<DTO> Delete(string ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.DeleteAsync($"/api/{ApiItemName}/{ID}");
 
@@ -145,7 +145,7 @@ namespace ShiftFrameworkTestingTools
             return items!;
         }
 
-        public async Task<List<RevisionDTO>> RevisionList(long ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
+        public async Task<List<RevisionDTO>> RevisionList(string ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
             HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}/{ID}/revisions");
 

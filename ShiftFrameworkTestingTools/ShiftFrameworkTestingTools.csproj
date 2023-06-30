@@ -14,6 +14,7 @@
 		<RepositoryUrl>https://github.com/ShiftSoftware/ShiftFrameworkTestingTools</RepositoryUrl>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageIcon>icon.png</PackageIcon>
+		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -30,7 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="Images\icon.png" />
+		<None Include="Images\icon.png" Pack="true" PackagePath="\" />
 		<Folder Include="Images\" />
 	</ItemGroup>
 

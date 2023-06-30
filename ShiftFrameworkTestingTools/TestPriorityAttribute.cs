@@ -1,7 +1,7 @@
 ﻿using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace ShiftFrameworkTestingTools;
+namespace ShiftSoftware.ShiftFrameworkTestingTools;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
 public class TestPriorityAttribute : Attribute

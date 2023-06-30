@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text;
 using Xunit.Abstractions;
 
-namespace ShiftFrameworkTestingTools
+namespace ShiftSoftware.ShiftFrameworkTestingTools
 {
     public class BasicTest<DTO, ListDTO>
         where DTO : ShiftEntityDTO

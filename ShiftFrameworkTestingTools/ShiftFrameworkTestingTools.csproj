@@ -7,7 +7,7 @@
 
 		<Authors>aza.asim,Shift Software</Authors>
 		<RootNamespace>ShiftSoftware.ShiftFrameworkTestingTools</RootNamespace>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<AssemblyName>ShiftSoftware.ShiftFrameworkTestingTools</AssemblyName>
 		<PackageId>ShiftSoftware.ShiftFrameworkTestingTools</PackageId>
 		<PackageProjectUrl>https://github.com/ShiftSoftware/ShiftFrameworkTestingTools</PackageProjectUrl>

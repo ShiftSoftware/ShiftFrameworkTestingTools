@@ -7,7 +7,7 @@
 
 		<Authors>aza.asim,Shift Software</Authors>
 		<RootNamespace>ShiftSoftware.ShiftFrameworkTestingTools</RootNamespace>
-		<Version>2023.09.14</Version>
+		<Version>2023.09.14.20</Version>
 		<AssemblyName>ShiftSoftware.ShiftFrameworkTestingTools</AssemblyName>
 		<PackageId>ShiftSoftware.ShiftFrameworkTestingTools</PackageId>
 		<PackageProjectUrl>https://github.com/ShiftSoftware/ShiftFrameworkTestingTools</PackageProjectUrl>
@@ -22,8 +22,8 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.20" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
-		<PackageReference Include="ShiftSoftware.ShiftEntity.Model" Version="2023.09.14" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj')" />
-		<PackageReference Include="ShiftSoftware.TypeAuth.Core" Version="2023.09.14" Condition="!Exists('..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj')" />
+		<PackageReference Include="ShiftSoftware.ShiftEntity.Model" Version="2023.09.14.20" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj')" />
+		<PackageReference Include="ShiftSoftware.TypeAuth.Core" Version="2023.09.14.20" Condition="!Exists('..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj')" />
 		<PackageReference Include="xunit" Version="2.4.2" />
 		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">

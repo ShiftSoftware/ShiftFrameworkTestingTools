@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using ShiftSoftware.ShiftEntity.EFCore.Extensions;
 
 namespace ShiftSoftware.ShiftFrameworkTestingTools;
 
@@ -39,7 +40,7 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
 
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        //builder.UseEnvironment("Development");
+        builder.UseEnvironment("Test");
 
         config = new ConfigurationBuilder()
                .SetBasePath(AppContext.BaseDirectory)
@@ -47,8 +48,6 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
                .Build();
 
         var host = builder.Build();
-
-        host.Start();
 
         var serviceProvider = host.Services;
 
@@ -60,6 +59,8 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
         }
+
+        host.Start();
 
         return host;
     }
@@ -129,7 +130,9 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
 
                 services.AddDbContext<DB>(options =>
                 {
-                    options.UseSqlServer(config!.GetConnectionString(dbConnectionSettingKey));
+                    options
+                    .UseSqlServer(config!.GetConnectionString(dbConnectionSettingKey)!)
+                    .UseTemporal(true);
                 });
             });
     }

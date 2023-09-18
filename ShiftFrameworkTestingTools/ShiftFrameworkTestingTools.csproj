@@ -24,6 +24,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
 		<PackageReference Include="ShiftSoftware.ShiftEntity.Model" Version="$(ShiftFrameworkVersion)" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj')" />
+		<PackageReference Include="ShiftSoftware.ShiftEntity.EFCore" Version="$(ShiftFrameworkVersion)" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.EFCore\ShiftEntity.EFCore.csproj')" />
 		<PackageReference Include="ShiftSoftware.TypeAuth.Core" Version="$(ShiftFrameworkVersion)" Condition="!Exists('..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj')" />
 		<PackageReference Include="xunit" Version="2.4.2" />
 		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
@@ -40,6 +41,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj" Condition="Exists('..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj')" />
+		<ProjectReference Include="..\..\ShiftEntity\ShiftEntity.EFCore\ShiftEntity.EFCore.csproj" Condition="Exists('..\..\ShiftEntity\ShiftEntity.EFCore\ShiftEntity.EFCore.csproj')" />
 		<ProjectReference Include="..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj" Condition="Exists('..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj')" />
 	</ItemGroup>
 </Project>

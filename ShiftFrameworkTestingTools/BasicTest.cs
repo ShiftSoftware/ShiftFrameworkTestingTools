@@ -8,7 +8,7 @@ using Xunit.Abstractions;
 namespace ShiftSoftware.ShiftFrameworkTestingTools
 {
     public class BasicTest<DTO, ListDTO>
-        where DTO : ShiftEntityDTO
+        where DTO : ShiftEntityViewAndUpsertDTO
         where ListDTO : ShiftEntityListDTO
     {
         public HttpClient client;

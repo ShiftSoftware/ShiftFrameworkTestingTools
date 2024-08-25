@@ -58,14 +58,14 @@ namespace ShiftSoftware.ShiftFrameworkTestingTools
 
         public async Task<List<ListDTO>?> OdataList(string? queryString = null, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
-            HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}{queryString}");
+            HttpResponseMessage obj = await client.GetAsync($"/api/{OdataItemName}{queryString}");
 
             return await ParseResponse<List<ListDTO>>(obj, ResponseTypes.OData, writeResponse, ensureSuccessStatusCode);
         }
 
         public async Task<List<RevisionDTO>?> RevisionList(string ID, bool ensureSuccessStatusCode = true, bool writeResponse = false)
         {
-            HttpResponseMessage obj = await client.GetAsync($"/odata/{OdataItemName}/{ID}/revisions");
+            HttpResponseMessage obj = await client.GetAsync($"/api/{OdataItemName}/{ID}/revisions");
 
             return await ParseResponse<List<RevisionDTO>>(obj, ResponseTypes.OData, writeResponse, ensureSuccessStatusCode);
         }

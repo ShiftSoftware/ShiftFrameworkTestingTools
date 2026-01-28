@@ -1,9 +1,9 @@
 ﻿using ShiftSoftware.ShiftEntity.Model;
 using ShiftSoftware.ShiftEntity.Model.Dtos;
-using System.Text.Json.Nodes;
-using System.Text.Json;
 using System.Text;
-using Xunit.Abstractions;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using Xunit;
 
 namespace ShiftSoftware.ShiftFrameworkTestingTools
 {

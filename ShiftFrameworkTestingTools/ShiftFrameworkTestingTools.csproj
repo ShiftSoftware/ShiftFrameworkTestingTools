@@ -29,7 +29,7 @@
 		<PackageReference Include="ShiftSoftware.ShiftEntity.Model" Version="$(ShiftFrameworkVersion)" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.Model\ShiftEntity.Model.csproj')" />
 		<PackageReference Include="ShiftSoftware.ShiftEntity.EFCore" Version="$(ShiftFrameworkVersion)" Condition="!Exists('..\..\ShiftEntity\ShiftEntity.EFCore\ShiftEntity.EFCore.csproj')" />
 		<PackageReference Include="ShiftSoftware.TypeAuth.Core" Version="$(TypeAuthVersion)" Condition="!Exists('..\..\TypeAuth\TypeAuth.Core\TypeAuth.Core.csproj')" />
-		<PackageReference Include="xunit.extensibility.core" Version="2.9.3" />
+		<PackageReference Include="xunit.v3.extensibility.core" Version="3.2.2" />
 	</ItemGroup>
 
 	<ItemGroup>

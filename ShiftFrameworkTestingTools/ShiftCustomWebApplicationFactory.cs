@@ -117,9 +117,19 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        if (config is null)
+        {
+            config = new ConfigurationBuilder()
+                  .SetBasePath(AppContext.BaseDirectory)
+                  .AddJsonFile("appsettings.json", false, true)
+                  .Build();
+        }
+
         builder
+            .UseConfiguration(config)
             .ConfigureServices(services =>
             {
+
                 var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<DB>));
 
                 if (descriptor != null)

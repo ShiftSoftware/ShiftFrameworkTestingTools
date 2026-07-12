@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using ShiftSoftware.TypeAuth.Core;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
@@ -86,9 +87,21 @@ public class ShiftCustomWebApplicationFactory<TStartup, DB> : WebApplicationFact
 
     static string GenerateToken(string secrete, string issuer, List<Type> actionTrees)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrete));
+        // APIs wired with AddShiftIdentity validate RSA-signed (asymmetric) tokens; point
+        // TokenKeySettingKey at the RSA private key for those. A key that isn't an RSA
+        // private key keeps the original symmetric HMAC signing.
+        SigningCredentials creds;
 
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        try
+        {
+            var rsa = RSA.Create();
+            rsa.ImportRSAPrivateKey(Convert.FromBase64String(secrete), out _);
+            creds = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256);
+        }
+        catch (Exception ex) when (ex is FormatException or CryptographicException)
+        {
+            creds = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secrete)), SecurityAlgorithms.HmacSha256);
+        }
 
         var tree = new Dictionary<string, object>();
 
